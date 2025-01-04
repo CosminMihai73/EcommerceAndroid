@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal">
+
+    <Button
+        android:id="@+id/manageProductsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gestionare Produse"
+        android:background="@drawable/button_background"
+        android:textColor="@color/background"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/viewReportsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vizualizare Rapoarte"
+        android:background="@drawable/button_background"
+        android:textColor="@color/background"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/updateProductInfoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Actualizare Informații Produse"
+        android:background="@drawable/button_background"
+        android:textColor="@color/background"
+        android:layout_marginBottom="16dp" />
+</LinearLayout>
