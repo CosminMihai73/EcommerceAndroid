@@ -1,0 +1,96 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/white"
+    android:gravity="center_horizontal">
+
+    <!-- EditText pentru Numele complet -->
+    <EditText
+        android:id="@+id/fullNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nume complet"
+        android:inputType="text"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"
+       />
+
+    <!-- EditText pentru Adresă -->
+    <EditText
+        android:id="@+id/addressEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Adresă"
+        android:inputType="text"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"
+        />
+
+    <!-- Grupul de opțiuni pentru metoda de plată -->
+    <RadioGroup
+        android:id="@+id/paymentMethodGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <!-- Opțiunea pentru plată cu Card -->
+        <RadioButton
+            android:id="@+id/paymentCardRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Card"
+            android:textSize="16sp"
+            android:padding="8dp"/>
+
+        <!-- Opțiunea pentru plată Cash -->
+        <RadioButton
+            android:id="@+id/paymentCashRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numerar"
+            android:textSize="16sp"
+            android:padding="8dp"/>
+    </RadioGroup>
+
+    <!-- Grupul de opțiuni pentru metoda de livrare -->
+    <RadioGroup
+        android:id="@+id/deliveryMethodGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="32dp">
+
+        <!-- Opțiunea pentru livrare prin curier -->
+        <RadioButton
+            android:id="@+id/deliveryCourierRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Livrare prin curier"
+            android:textSize="16sp"
+            android:padding="8dp"/>
+
+        <!-- Opțiunea pentru ridicare din showroom -->
+        <RadioButton
+            android:id="@+id/deliveryShowroomRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ridicare din showroom"
+            android:textSize="16sp"
+            android:padding="8dp"/>
+    </RadioGroup>
+
+    <!-- Butonul pentru trimiterea comenzii -->
+    <Button
+        android:id="@+id/submitOrderButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Trimite comanda"
+        android:textColor="@android:color/white"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+</LinearLayout>
