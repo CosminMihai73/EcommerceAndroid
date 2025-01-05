@@ -29,8 +29,8 @@ public class ClientMainActivity extends AppCompatActivity {
     private Button applyFiltersButton;
     private Spinner brandFilter;
     private EditText minPriceFilter, maxPriceFilter, stockFilter;
-
-    private List<String> brandList = new ArrayList<>();  // List pentru branduri
+    private List<String> brandList = new ArrayList<>();
+    private Button settingsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +83,15 @@ public class ClientMainActivity extends AppCompatActivity {
 
             // Încarcă produsele filtrate
             loadFilteredProducts(selectedBrand, minPrice, maxPrice, stock);
+        });
+        // Inițializarea butonului de setări
+        settingsButton = findViewById(R.id.settingsButton);
+
+        // Setarea unui OnClickListener pentru butonul de setări
+        settingsButton.setOnClickListener(v -> {
+            // Navighează către SettingsActivity
+            Intent intent = new Intent(ClientMainActivity.this, SettingsActivity.class);
+            startActivity(intent);
         });
     }
 
