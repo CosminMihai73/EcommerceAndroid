@@ -31,6 +31,11 @@
         <activity android:name=".CartActivity"/>
         <activity android:name=".OrderConfirmationActivity"/>
         <activity android:name=".SettingsActivity"/>
+        <activity android:name=".PurchaseHistoryActivity" />
+        <activity android:name=".OrderDetailActivity"/>
+        <activity android:name=".ReservationHistoryActivity" />
+
+
 
 
     </application>

@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Buton pentru Istoric Achiziții -->
+    <Button
+        android:id="@+id/purchaseHistoryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Istoric Achiziții"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Buton pentru Istoric Rezervări -->
+    <Button
+        android:id="@+id/reservationHistoryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Istoric Rezervări"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Buton pentru Deconectare -->
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deconectare"
+        android:layout_marginBottom="16dp"/>
+</LinearLayout>

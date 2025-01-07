@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_marginBottom="8dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/fullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nume: "
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adresă: "
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/paymentMethod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Metoda de plată: "
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/deliveryMethod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Metoda de livrare: "
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/totalPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total: "
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/createdAt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data: "
+        android:textSize="14sp" />
+</LinearLayout>
