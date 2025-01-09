@@ -1,4 +1,4 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ecommerceapp.models.Order;
+import com.example.ecommerceapp.R;
+import com.example.ecommerceapp.activities.OrderDetailActivity;
+
 import java.util.List;
 
 public class PurchaseHistoryAdapter extends RecyclerView.Adapter<PurchaseHistoryAdapter.PurchaseViewHolder> {

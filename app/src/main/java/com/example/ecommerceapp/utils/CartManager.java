@@ -1,7 +1,10 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.example.ecommerceapp.models.CartItem;
+import com.example.ecommerceapp.models.Product;
 import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import java.lang.reflect.Type;

@@ -1,4 +1,4 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -6,6 +6,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ecommerceapp.db.DBHelper;
+import com.example.ecommerceapp.R;
+import com.example.ecommerceapp.adapters.ReservationHistoryAdapter;
+import com.example.ecommerceapp.models.ReservationItem;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,4 +1,4 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ecommerceapp.models.OrderItem;
+import com.example.ecommerceapp.R;
+
 import java.util.List;
 
 public class OrderItemsAdapter extends RecyclerView.Adapter<OrderItemsAdapter.OrderItemViewHolder> {

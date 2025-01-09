@@ -1,4 +1,4 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +10,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ecommerceapp.models.CartItem;
+import com.example.ecommerceapp.utils.CartManager;
+import com.example.ecommerceapp.db.DBHelper;
+import com.example.ecommerceapp.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;

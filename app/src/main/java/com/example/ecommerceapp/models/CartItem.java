@@ -1,4 +1,4 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.models;
 
 public class CartItem {
     private String productName;

@@ -1,4 +1,4 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.models;
 
 public class Order {
     private int orderId;

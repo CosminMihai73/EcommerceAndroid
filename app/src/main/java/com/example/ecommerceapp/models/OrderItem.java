@@ -1,15 +1,13 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.models;
 
-public class ReservationItem {
+public class OrderItem {
     private String productName;
     private int quantity;
-    private String expirationDate;
 
     // Constructor
-    public ReservationItem(String productName, int quantity, String expirationDate) {
+    public OrderItem(String productName, int quantity) {
         this.productName = productName;
         this.quantity = quantity;
-        this.expirationDate = expirationDate;
     }
 
     // Getters
@@ -21,7 +19,12 @@ public class ReservationItem {
         return quantity;
     }
 
-    public String getExpirationDate() {
-        return expirationDate;
+    // Setters
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

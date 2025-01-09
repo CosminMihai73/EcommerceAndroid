@@ -1,4 +1,4 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.example.ecommerceapp.models.Product;
+import com.example.ecommerceapp.R;
+import com.example.ecommerceapp.activities.ProductDetailActivity;
+
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {

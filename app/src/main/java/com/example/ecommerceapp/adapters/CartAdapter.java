@@ -1,4 +1,4 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.example.ecommerceapp.models.CartItem;
+import com.example.ecommerceapp.utils.CartManager;
+import com.example.ecommerceapp.R;
+import com.example.ecommerceapp.activities.CartActivity;
+
 import java.text.DecimalFormat;
 import java.util.List;
 

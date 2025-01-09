@@ -1,4 +1,4 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.db;
 
 import android.util.Log;
 import java.sql.Connection;

@@ -1,4 +1,4 @@
-package com.example.ecommerceapp;
+package com.example.ecommerceapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ecommerceapp.adapters.CartAdapter;
+import com.example.ecommerceapp.models.CartItem;
+import com.example.ecommerceapp.utils.CartManager;
+import com.example.ecommerceapp.R;
 import com.google.gson.Gson;
 
 import java.text.DecimalFormat;
@@ -62,7 +66,7 @@ public class CartActivity extends AppCompatActivity {
         });
     }
 
-    void updateTotal() {
+    public void updateTotal() {
         double totalPrice = cartManager.getSavedTotalPrice();
 
         // Formatează prețul total cu 2 zecimale
