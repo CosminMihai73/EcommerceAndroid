@@ -4,14 +4,12 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- RecyclerView pentru produsele din baza de date -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewProducts"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <!-- Butonul pentru adăugarea unui produs -->
     <Button
         android:id="@+id/buttonAddProduct"
         android:layout_width="match_parent"
@@ -19,7 +17,6 @@
         android:text="Adaugă un produs nou"
         android:layout_marginTop="20dp" />
 
-    <!-- Formularul de editare produs -->
     <LinearLayout
         android:id="@+id/editProductLayout"
         android:orientation="vertical"
@@ -72,7 +69,6 @@
             android:text="Salveaza" />
     </LinearLayout>
 
-    <!-- Formularul de adăugare a unui produs -->
     <LinearLayout
         android:id="@+id/addProductLayout"
         android:orientation="vertical"

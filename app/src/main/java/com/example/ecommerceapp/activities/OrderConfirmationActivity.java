@@ -1,14 +1,21 @@
 package com.example.ecommerceapp.activities;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Build;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ecommerceapp.models.CartItem;
@@ -17,6 +24,7 @@ import com.example.ecommerceapp.db.DBHelper;
 import com.example.ecommerceapp.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.lang.reflect.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,6 +36,9 @@ import java.util.List;
 
 public class OrderConfirmationActivity extends AppCompatActivity {
 
+    private static final String CHANNEL_ID = "order_confirmation_channel";  // ID-ul canalului
+    private static final CharSequence CHANNEL_NAME = "Order Confirmation";  // Numele canalului
+
     private EditText fullNameEditText, addressEditText;
     private RadioGroup paymentMethodGroup, deliveryMethodGroup;
     private Button submitOrderButton;
@@ -37,6 +48,23 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_confirmation);
+
+        // Log pentru începutul creării activității
+        Log.d("OrderConfirmation", "Activitatea OrderConfirmation a fost creată");
+
+        // Verifică Android version și creează canalul de notificări dacă este necesar
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(
+                    CHANNEL_ID,
+                    CHANNEL_NAME,
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+                Log.d("Notification", "Canalul de notificare a fost creat cu succes");
+            }
+        }
 
         fullNameEditText = findViewById(R.id.fullNameEditText);
         addressEditText = findViewById(R.id.addressEditText);
@@ -59,6 +87,10 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             String paymentMethod = ((RadioButton) findViewById(paymentMethodGroup.getCheckedRadioButtonId())).getText().toString();
             String deliveryMethod = ((RadioButton) findViewById(deliveryMethodGroup.getCheckedRadioButtonId())).getText().toString();
 
+            // Log pentru valorile preluate din UI
+            Log.d("OrderConfirmation", "Metodă de plată: " + paymentMethod);
+            Log.d("OrderConfirmation", "Metodă de livrare: " + deliveryMethod);
+
             // Validare pentru metodele de plată și livrare
             paymentMethod = mapPaymentMethod(paymentMethod); // Mapează 'Numerar' la 'Cash'
             deliveryMethod = mapDeliveryMethod(deliveryMethod); // Mapează 'Livrare prin curier' la 'Curier'
@@ -66,6 +98,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             // Verifică dacă valorile sunt corecte
             if (!isValidEnumValue(paymentMethod, new String[]{"Card", "Cash"}) || !isValidEnumValue(deliveryMethod, new String[]{"Curier", "Showroom"})) {
                 Toast.makeText(OrderConfirmationActivity.this, "Metodă de plată sau livrare invalidă", Toast.LENGTH_SHORT).show();
+                Log.e("OrderConfirmation", "Metodă de plată sau livrare invalidă");
                 return; // Oprește executarea dacă valoarea nu este validă
             }
 
@@ -74,6 +107,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                 new SubmitOrderTask().execute(fullName, address, paymentMethod, deliveryMethod, cartItems);
             } else {
                 Toast.makeText(OrderConfirmationActivity.this, "Completează toate câmpurile", Toast.LENGTH_SHORT).show();
+                Log.e("OrderConfirmation", "Câmpuri goale");
             }
         });
     }
@@ -109,6 +143,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
 
             // Calculează prețul total
             double totalPrice = calculateTotalPrice(cartItems);
+            Log.d("OrderConfirmation", "Preț total: " + totalPrice);
 
             // Salvează comanda în baza de date
             saveOrderToDatabase(fullName, address, paymentMethod, deliveryMethod, totalPrice, cartItems);
@@ -120,10 +155,33 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             // Afișează un mesaj de confirmare
             Toast.makeText(OrderConfirmationActivity.this, "Comanda a fost plasată cu succes!", Toast.LENGTH_SHORT).show();
 
+            // Trimite notificarea
+            sendSuccessNotification();
+
             // Navighează la ClientMainActivity
             Intent intent = new Intent(OrderConfirmationActivity.this, ClientMainActivity.class);
             startActivity(intent);
             finish();
+        }
+
+        private void sendSuccessNotification() {
+            Log.d("Notification", "Se trimite notificarea de succes");
+
+            // Creează notificarea
+            Notification notification = new Notification.Builder(OrderConfirmationActivity.this, CHANNEL_ID)
+                    .setContentTitle("Comandă plasată cu succes")
+                    .setContentText("Comanda ta a fost procesată cu succes și va fi livrată în curând!")
+                    .setSmallIcon(android.R.drawable.ic_dialog_info)
+                    .build();
+
+            // Trimite notificarea
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (notificationManager != null) {
+                notificationManager.notify(1, notification);  // ID-ul notificării
+                Log.d("Notification", "Notificarea a fost trimisă");
+            } else {
+                Log.e("Notification", "Eroare la trimiterea notificării");
+            }
         }
 
     }
@@ -180,7 +238,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                 cartManager.saveCartItems(new ArrayList<>());
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Log.e("OrderConfirmation", "Eroare la salvarea comenzii în baza de date", e);
         }
     }
 

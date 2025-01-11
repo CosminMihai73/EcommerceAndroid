@@ -2,42 +2,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center_horizontal">
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    android:background="#FFFFFF">
 
     <Button
         android:id="@+id/manageProductsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Gestionare Produse"
-        android:background="@drawable/button_background"
-        android:textColor="@color/background"
-        android:layout_marginBottom="16dp" />
+        android:background="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/viewReportsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Vizualizare Rapoarte"
-        android:background="@drawable/button_background"
-        android:textColor="@color/background"
-        android:layout_marginBottom="16dp" />
+        android:background="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/updateUserInfoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Actualizare Informații useri"
-        android:background="@drawable/button_background"
-        android:textColor="@color/background"
-        android:layout_marginBottom="16dp" />
+        android:background="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/logoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Deconectare"
+        android:textColor="#FF5722"
+        android:textSize="14sp"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"/>
 
 </LinearLayout>

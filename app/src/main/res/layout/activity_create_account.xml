@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:hint="Username"
         android:inputType="text"
-        android:background="@drawable/input_background"
-        android:textColor="@color/textPrimary" />
+        android:background="#E0E0E0"
+        android:textColor="#000000" />
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:hint="Parola"
         android:inputType="textPassword"
-        android:background="@drawable/input_background"
-        android:textColor="@color/textPrimary" />
+        android:background="#E0E0E0"
+        android:textColor="#000000" />
 
     <EditText
         android:id="@+id/emailEditText"
@@ -28,14 +28,14 @@
         android:layout_height="wrap_content"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:background="@drawable/input_background"
-        android:textColor="@color/textPrimary" />
+        android:background="#E0E0E0"
+        android:textColor="#000000" />
 
     <Button
         android:id="@+id/createAccountButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Crează Cont"
-        android:background="@drawable/button_background"
-        android:textColor="@color/background" />
+        android:background="#4CAF50"
+        android:textColor="#FFFFFF" />
 </LinearLayout>

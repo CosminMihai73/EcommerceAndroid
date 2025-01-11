@@ -42,14 +42,14 @@ public class AdminMainActivity extends AppCompatActivity {
             Intent intent = new Intent(AdminMainActivity.this, ManageProductsActivity.class);
             startActivity(intent);
         });
-//
-//        // Vizualizare Rapoarte
-//        viewReportsButton.setOnClickListener(v -> {
-//            // Aici adaugi logica pentru a deschide activitatea de vizualizare rapoarte
-//            Intent intent = new Intent(AdminMainActivity.this, ViewReportsActivity.class);
-//            startActivity(intent);
-//        });
-//
+
+        // Vizualizare Rapoarte
+        viewReportsButton.setOnClickListener(v -> {
+            // Aici adaugi logica pentru a deschide activitatea de vizualizare rapoarte
+            Intent intent = new Intent(AdminMainActivity.this, ReportsActivity.class);
+            startActivity(intent);
+        });
+
         // Actualizare Informații user
         updateUserInfoButton.setOnClickListener(v -> {
             // Aici adaugi logica pentru a deschide activitatea de actualizare informații produse

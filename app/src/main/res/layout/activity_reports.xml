@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Selectorul de dată de început -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selectează data de început:" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/selectStartDateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selectează data de început" />
+
+    <!-- Selectorul de dată de sfârșit -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selectează data de sfârșit:" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/selectEndDateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selectează data de sfârșit" />
+
+    <!-- Spinner pentru selectarea metodei de plată -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selectează metoda de plată:" />
+    <Spinner
+        android:id="@+id/paymentMethodSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Buton pentru a genera raportul -->
+    <Button
+        android:id="@+id/generateReportButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Generează raport" />
+
+    <!-- Text pentru a arăta suma totală -->
+
+    <!-- RecyclerView pentru afișarea rezultatelor raportului -->
+    <TextView
+        android:id="@+id/totalAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Suma totală: 0.00"
+        android:textSize="18sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewReports"
+        android:layout_width="match_parent"
+        android:layout_height="262dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

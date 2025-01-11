@@ -3,34 +3,40 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Setări"
-        android:background="@drawable/button_background"
-        android:textColor="@color/background"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
 
-    <Button
-        android:id="@+id/viewCartButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vezi Coș"
-        android:background="@drawable/button_background"
-        android:textColor="@color/background"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center" />
+        <Button
+            android:id="@+id/settingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Setări"
+            android:background="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="16dp" />
 
-    <!-- Butonul pentru filtrare -->
-    <Button
-        android:id="@+id/filterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Filtrează" />
+        <Button
+            android:id="@+id/viewCartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vezi Coș"
+            android:background="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="16dp" />
 
-    <!-- Meniul de filtre -->
+        <Button
+            android:id="@+id/filterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filtrează"
+            android:background="#FF5722"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/filterMenu"
         android:layout_width="match_parent"
@@ -38,15 +44,12 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <!-- Spinner pentru filtrul de brand -->
         <Spinner
             android:id="@+id/brandFilter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/filterMenu"
             android:layout_marginTop="20dp" />
 
-        <!-- EditText pentru prețul minim -->
         <EditText
             android:id="@+id/minPriceFilter"
             android:layout_width="match_parent"
@@ -54,7 +57,6 @@
             android:hint="Preț minim"
             android:inputType="numberDecimal" />
 
-        <!-- EditText pentru prețul maxim -->
         <EditText
             android:id="@+id/maxPriceFilter"
             android:layout_width="match_parent"
@@ -62,7 +64,6 @@
             android:hint="Preț maxim"
             android:inputType="numberDecimal" />
 
-        <!-- EditText pentru stoc -->
         <EditText
             android:id="@+id/stockFilter"
             android:layout_width="match_parent"
@@ -70,15 +71,17 @@
             android:hint="Stoc minim"
             android:inputType="number" />
 
-        <!-- Buton pentru aplicarea filtrelor -->
         <Button
             android:id="@+id/applyFiltersButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Aplică filtrele" />
+            android:text="Aplică filtrele"
+            android:background="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center" />
     </LinearLayout>
 
-    <!-- RecyclerView pentru a arăta produsele -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

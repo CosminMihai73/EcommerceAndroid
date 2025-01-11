@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">EcommerceApp</string>
+    <string name="app_name">Electro Shop</string>
+    <string-array name="payment_methods">
+        <item>Card</item>
+        <item>Cash</item>
+    </string-array>
 </resources>
