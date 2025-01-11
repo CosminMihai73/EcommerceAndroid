@@ -4,7 +4,6 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
-    <!-- Numele produsului -->
     <TextView
         android:id="@+id/productNameTextView"
         android:layout_width="0dp"
@@ -14,7 +13,6 @@
         android:textSize="16sp"
         android:paddingEnd="10dp"/>
 
-    <!-- Cantitatea -->
     <TextView
         android:id="@+id/quantityTextView"
         android:layout_width="wrap_content"
@@ -23,7 +21,6 @@
         android:textSize="16sp"
         android:paddingEnd="10dp"/>
 
-    <!-- Prețul produsului -->
     <TextView
         android:id="@+id/priceTextView"
         android:layout_width="wrap_content"

@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Titlu pentru pagina de Istoric Rezervări -->
     <TextView
         android:id="@+id/historyTitle"
         android:layout_width="match_parent"
@@ -16,7 +15,6 @@
         android:gravity="center"
         android:layout_marginBottom="16dp"/>
 
-    <!-- RecyclerView pentru a afișa rezervările -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewReservations"
         android:layout_width="match_parent"

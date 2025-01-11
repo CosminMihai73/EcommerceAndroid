@@ -36,12 +36,12 @@ public class PurchaseHistoryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // Încarcă istoricul comenzilor pentru utilizatorul curent
+
         loadPurchaseHistory();
     }
 
     private void loadPurchaseHistory() {
-        // Obține ID-ul utilizatorului din SharedPreferences
+
         SharedPreferences sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
         int userId = sharedPreferences.getInt("user_id", -1);
 
@@ -50,7 +50,6 @@ public class PurchaseHistoryActivity extends AppCompatActivity {
             return;
         }
 
-        // Rulează interogarea SQL într-un thread separat
         new Thread(() -> {
             List<Order> orders = getOrdersForUser(userId);
             runOnUiThread(() -> {
@@ -85,7 +84,6 @@ public class PurchaseHistoryActivity extends AppCompatActivity {
                     double totalPrice = rs.getDouble("total_price");
                     String createdAt = rs.getString("created_at");
 
-                    // Adaugă comanda în listă
                     orders.add(new Order(orderId, fullName, address, paymentMethod, deliveryMethod, totalPrice, createdAt));
                 }
             }

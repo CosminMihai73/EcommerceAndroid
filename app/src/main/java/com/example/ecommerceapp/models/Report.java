@@ -6,7 +6,7 @@ public class Report {
     private double price;
     private double totalValue;
 
-    // Constructor
+
     public Report(String productName, int quantity, double price, double totalValue) {
         this.productName = productName;
         this.quantity = quantity;
@@ -14,7 +14,6 @@ public class Report {
         this.totalValue = totalValue;
     }
 
-    // Getters și setters
     public String getProductName() {
         return productName;
     }

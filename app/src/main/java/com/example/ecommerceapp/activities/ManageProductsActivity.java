@@ -52,7 +52,6 @@ public class ManageProductsActivity extends AppCompatActivity {
         productList = new ArrayList<>();
         dbHelper = new DBHelper();
 
-        // Formularul de editare
         editProductLayout = findViewById(R.id.editProductLayout);
         editTextName = findViewById(R.id.editTextName);
         editTextBrand = findViewById(R.id.editTextBrand);
@@ -62,7 +61,7 @@ public class ManageProductsActivity extends AppCompatActivity {
         editTextImagePath = findViewById(R.id.editTextImagePath);
         saveProductButton = findViewById(R.id.saveProductButton);
 
-        // Formularul de adăugare a unui produs
+
         addProductLayout = findViewById(R.id.addProductLayout);
         editTextAddName = findViewById(R.id.editTextAddName);
         editTextAddBrand = findViewById(R.id.editTextAddBrand);
@@ -72,25 +71,24 @@ public class ManageProductsActivity extends AppCompatActivity {
         editTextAddImagePath = findViewById(R.id.editTextAddImagePath);
         saveNewProductButton = findViewById(R.id.saveNewProductButton);
 
-        // Butonul de adăugare produs
+
         addProductButton = findViewById(R.id.buttonAddProduct);
 
-        // Încarcă produsele din baza de date
+
         loadProducts();
 
-        // Salvarea modificărilor la produs
+
         saveProductButton.setOnClickListener(v -> saveProduct());
 
-        // Afișează formularul pentru adăugarea unui produs
+
         addProductButton.setOnClickListener(v -> {
             addProductLayout.setVisibility(View.VISIBLE);
             editProductLayout.setVisibility(View.GONE);
         });
 
-        // Salvează un produs nou
+
         saveNewProductButton.setOnClickListener(v -> saveNewProduct());
 
-        // Creează canalul de notificare
         createNotificationChannel();
     }
 

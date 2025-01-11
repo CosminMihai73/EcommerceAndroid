@@ -29,7 +29,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Asigură-te că ai fișierul activity_order_detail.xml în res/layout/
+
         setContentView(R.layout.activity_order_detail);
 
         recyclerView = findViewById(R.id.recyclerViewOrderItems);
@@ -38,7 +38,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // Obține ID-ul comenzii din Intent
+
         Intent intent = getIntent();
         orderId = intent.getIntExtra("orderId", -1);
 
@@ -47,7 +47,6 @@ public class OrderDetailActivity extends AppCompatActivity {
             return;
         }
 
-        // Încarcă produsele asociate comenzii
         loadOrderItems(orderId);
     }
 
@@ -81,7 +80,6 @@ public class OrderDetailActivity extends AppCompatActivity {
                     String productName = rs.getString("product_name");
                     int quantity = rs.getInt("quantity");
 
-                    // Creăm un obiect OrderItem pentru fiecare produs din comanda
                     orderItems.add(new OrderItem(productName, quantity));
                 }
             }

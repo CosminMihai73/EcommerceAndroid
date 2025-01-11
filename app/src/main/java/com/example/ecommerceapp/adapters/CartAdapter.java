@@ -38,7 +38,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public void onBindViewHolder(CartViewHolder holder, int position) {
         CartItem cartItem = cartItems.get(position);
 
-        // Formatează prețul produsului cu 2 zecimale și 3 caractere înainte de virgulă
         DecimalFormat decimalFormat = new DecimalFormat("000.00");
         String formattedPrice = decimalFormat.format(cartItem.getProductPrice());
 

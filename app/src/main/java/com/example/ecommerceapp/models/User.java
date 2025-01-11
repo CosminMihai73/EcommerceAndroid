@@ -6,7 +6,6 @@ public class User {
     private String email;
     private String type;
 
-    // Constructor
     public User(int id, String username, String email, String type) {
         this.id = id;
         this.username = username;
@@ -14,7 +13,6 @@ public class User {
         this.type = type;
     }
 
-    // Getters și setters
     public int getId() {
         return id;
     }

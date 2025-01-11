@@ -27,7 +27,6 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
     public void onBindViewHolder(ReportViewHolder holder, int position) {
         Report report = reportList.get(position);
 
-        // Setăm valorile pentru numele produsului, cantitate și preț
         holder.productNameTextView.setText(report.getProductName());
         holder.quantityTextView.setText(String.valueOf(report.getQuantity()));
         holder.priceTextView.setText(String.format("%.2f", report.getPrice()));

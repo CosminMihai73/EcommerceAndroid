@@ -53,13 +53,13 @@ public class ReportsActivity extends AppCompatActivity {
         generateReportButton = findViewById(R.id.generateReportButton);
         paymentMethodSpinner = findViewById(R.id.paymentMethodSpinner);
 
-        // Setează adapterul pentru Spinner
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.payment_methods, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         paymentMethodSpinner.setAdapter(adapter);
 
-        // Selectează un item din Spinner
+
         paymentMethodSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -68,28 +68,26 @@ public class ReportsActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // Dacă nu s-a selectat nimic, setează un string gol
+
                 paymentMethod = "";
             }
         });
 
-        // Afișează DatePickerDialog pentru data de început
         selectStartDateButton.setOnClickListener(v -> {
             showDatePickerDialog(true);
         });
 
-        // Afișează DatePickerDialog pentru data de sfârșit
         selectEndDateButton.setOnClickListener(v -> {
             showDatePickerDialog(false);
         });
 
-        // Generează raportul pe baza selecțiilor
+
         generateReportButton.setOnClickListener(v -> {
             generateReport();
         });
     }
 
-    // Funcția pentru a arăta DatePickerDialog
+
     private void showDatePickerDialog(final boolean isStartDate) {
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -115,9 +113,9 @@ public class ReportsActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    // Generarea raportului în funcție de selecțiile făcute
+
     private void generateReport() {
-        // Verifică dacă utilizatorul a selectat o metodă de plată
+
         if (paymentMethod == null || paymentMethod.isEmpty()) {
             Toast.makeText(ReportsActivity.this, "Te rog selectează o metodă de plată!", Toast.LENGTH_SHORT).show();
             return;
@@ -148,7 +146,7 @@ public class ReportsActivity extends AppCompatActivity {
                         ResultSet rs = stmt.executeQuery();
 
                         final ArrayList<Report> tempReportList = new ArrayList<>();
-                        totalAmount = 0.0;  // Resetăm totalAmount înainte de fiecare calcul
+                        totalAmount = 0.0;
 
                         while (rs.next()) {
                             String productName = rs.getString("product_name");
@@ -156,22 +154,22 @@ public class ReportsActivity extends AppCompatActivity {
                             double price = rs.getDouble("price");
                             double totalValue = rs.getDouble("total_value");
 
-                            // Adăugăm produsul în lista de rapoarte
+
                             Report report = new Report(productName, quantity, price, totalValue);
                             tempReportList.add(report);
 
-                            // Calculăm suma totală
+
                             totalAmount += totalValue;
                         }
 
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                // Afișăm rapoartele în RecyclerView
+
                                 reportAdapter = new ReportAdapter(tempReportList);
                                 recyclerViewReports.setAdapter(reportAdapter);
 
-                                // Afișăm suma totală la final
+
                                 TextView totalAmountTextView = findViewById(R.id.totalAmountTextView);
                                 totalAmountTextView.setText("Suma totală: " + totalAmount+ " RON");
                             }
@@ -187,6 +185,6 @@ public class ReportsActivity extends AppCompatActivity {
                     }
                 }
             }
-        }).start();  // Pornim thread-ul
+        }).start();
     }
 }

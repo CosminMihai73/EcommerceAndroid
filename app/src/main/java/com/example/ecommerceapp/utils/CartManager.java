@@ -27,9 +27,9 @@ public class CartManager {
         String cartJson = gson.toJson(cartItems);
         sharedPreferences.edit().putString(CART_KEY, cartJson).apply();
 
-        // Recalculăm totalul și îl salvăm
+
         double totalPrice = getTotalPrice();
-        sharedPreferences.edit().putFloat(TOTAL_KEY, (float) totalPrice).apply();  // Salvăm prețul total
+        sharedPreferences.edit().putFloat(TOTAL_KEY, (float) totalPrice).apply();
     }
 
     public List<CartItem> getCartItems() {
@@ -44,7 +44,6 @@ public class CartManager {
             total += cartItem.getProductPrice() * cartItem.getQuantity();
         }
 
-        // Formatează totalul cu 2 zecimale și asigură-te că are 3 caractere înainte de virgulă
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         return Double.parseDouble(decimalFormat.format(total));
     }

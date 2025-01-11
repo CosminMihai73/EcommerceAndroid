@@ -47,18 +47,17 @@ public class CartActivity extends AppCompatActivity {
 
         updateTotal();
 
-        // Setează OnClickListener pentru butonul de plasare a comenzii
+
         placeOrderButton.setOnClickListener(v -> {
-            // Dacă coșul nu este gol, navighează la activitatea de plasare a comenzii
+
             if (!cartItems.isEmpty()) {
-                // Log pentru a verifica produsele din coș
                 for (CartItem item : cartItems) {
                     Log.d("Cart", "Product: " + item.getProductName() + ", Quantity: " + item.getQuantity());
                 }
 
-                // Trimitem produsele din coș prin Intent
+
                 Intent intent = new Intent(CartActivity.this, OrderConfirmationActivity.class);
-                intent.putExtra("cartItems", new Gson().toJson(cartItems)); // Convertim lista de CartItem într-un JSON
+                intent.putExtra("cartItems", new Gson().toJson(cartItems));
                 startActivity(intent);
             } else {
                 Toast.makeText(CartActivity.this, "Coșul de cumpărături este gol!", Toast.LENGTH_SHORT).show();
@@ -69,7 +68,6 @@ public class CartActivity extends AppCompatActivity {
     public void updateTotal() {
         double totalPrice = cartManager.getSavedTotalPrice();
 
-        // Formatează prețul total cu 2 zecimale
         DecimalFormat decimalFormat = new DecimalFormat("00.00");
         String formattedTotal = decimalFormat.format(totalPrice);
 

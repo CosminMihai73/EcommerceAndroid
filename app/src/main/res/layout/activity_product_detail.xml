@@ -5,14 +5,14 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Imaginea produsului -->
+
     <ImageView
         android:id="@+id/productImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop" />
 
-    <!-- Numele produsului -->
+
     <TextView
         android:id="@+id/productName"
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         android:textStyle="bold"
         android:layout_marginTop="16dp"/>
 
-    <!-- Brandul produsului -->
+
     <TextView
         android:id="@+id/productBrand"
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
         android:textSize="16sp"
         android:layout_marginTop="8dp"/>
 
-    <!-- Prețul produsului -->
+
     <TextView
         android:id="@+id/productPrice"
         android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
         android:textSize="16sp"
         android:layout_marginTop="8dp"/>
 
-    <!-- Stocul produsului -->
+
     <TextView
         android:id="@+id/productStock"
         android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
         android:textSize="16sp"
         android:layout_marginTop="8dp"/>
 
-    <!-- Descrierea produsului -->
+
     <TextView
         android:id="@+id/productDescription"
         android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
         android:textSize="16sp"
         android:layout_marginTop="8dp"/>
 
-    <!-- Butonul de adăugare în coș -->
+
     <Button
         android:id="@+id/addToCartButton"
         android:layout_width="match_parent"
@@ -63,7 +63,6 @@
         android:background="@drawable/button_background"
         android:textColor="@color/background" />
 
-    <!-- Butonul de rezervare -->
     <Button
         android:id="@+id/reserveButton"
         android:layout_width="match_parent"

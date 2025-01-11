@@ -57,21 +57,21 @@ public class ClientMainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(productAdapter);
 
-        // Butonul pentru a vedea coșul de cumpărături
+
         Button viewCartButton = findViewById(R.id.viewCartButton);
         viewCartButton.setOnClickListener(v -> {
-            // Navigăm către activitatea CartActivity
+
             Intent intent = new Intent(ClientMainActivity.this, CartActivity.class);
             startActivity(intent);
         });
 
-        // Încarcă produsele și brandurile din baza de date
+
         loadProducts();
         loadBrands();
 
-        // Setează OnClickListener pentru butonul de filtrare
+
         filterButton.setOnClickListener(v -> {
-            // Toggle vizibilitatea meniului de filtrare
+
             if (filterMenu.getVisibility() == View.GONE) {
                 filterMenu.setVisibility(View.VISIBLE);
             } else {
@@ -79,30 +79,30 @@ public class ClientMainActivity extends AppCompatActivity {
             }
         });
 
-        // Setează OnClickListener pentru butonul de aplicare a filtrelor
+
         applyFiltersButton.setOnClickListener(v -> {
-            // Obține valorile din filtre
+
             String selectedBrand = brandFilter.getSelectedItem().toString();
             String minPrice = minPriceFilter.getText().toString();
             String maxPrice = maxPriceFilter.getText().toString();
             String stock = stockFilter.getText().toString();
 
-            // Încarcă produsele filtrate
+
             loadFilteredProducts(selectedBrand, minPrice, maxPrice, stock);
         });
-        // Inițializarea butonului de setări
+
         settingsButton = findViewById(R.id.settingsButton);
 
-        // Setarea unui OnClickListener pentru butonul de setări
+
         settingsButton.setOnClickListener(v -> {
-            // Navighează către SettingsActivity
+
             Intent intent = new Intent(ClientMainActivity.this, SettingsActivity.class);
             startActivity(intent);
         });
     }
 
     private void loadProducts() {
-        // Încărcăm produsele din baza de date într-un thread separat
+
         Thread thread = new Thread(() -> {
             Connection connection = new DBHelper().CONN();
             if (connection != null) {
@@ -133,7 +133,7 @@ public class ClientMainActivity extends AppCompatActivity {
     }
 
     private void loadBrands() {
-        // Încărcăm brandurile din baza de date într-un thread separat
+
         Thread thread = new Thread(() -> {
             Connection connection = new DBHelper().CONN();
             if (connection != null) {
@@ -142,14 +142,14 @@ public class ClientMainActivity extends AppCompatActivity {
                     PreparedStatement stmt = connection.prepareStatement(query);
                     ResultSet rs = stmt.executeQuery();
                     brandList.clear();
-                    brandList.add("Toate brandurile");  // Adăugăm opțiunea de a selecta toate brandurile
+                    brandList.add("Toate brandurile");
                     while (rs.next()) {
                         String brand = rs.getString("brand");
                         brandList.add(brand);
                     }
 
                     runOnUiThread(() -> {
-                        // Populăm Spinner-ul cu branduri
+
                         ArrayAdapter<String> adapter = new ArrayAdapter<>(ClientMainActivity.this, android.R.layout.simple_spinner_item, brandList);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         brandFilter.setAdapter(adapter);
@@ -164,14 +164,14 @@ public class ClientMainActivity extends AppCompatActivity {
     }
 
     private void loadFilteredProducts(String brand, String minPrice, String maxPrice, String stock) {
-        // Încarcă produsele filtrate din baza de date într-un thread separat
+
         Thread thread = new Thread(() -> {
             Connection connection = new DBHelper().CONN();
             if (connection != null) {
                 try {
                     StringBuilder query = new StringBuilder("SELECT * FROM Products WHERE 1=1");
 
-                    // Adaugă condiții de filtrare
+
                     if (!brand.equals("All Brands")) {
                         query.append(" AND brand = ?");
                     }
@@ -187,7 +187,7 @@ public class ClientMainActivity extends AppCompatActivity {
 
                     PreparedStatement stmt = connection.prepareStatement(query.toString());
 
-                    // Setează parametrii pentru interogare
+
                     int index = 1;
                     if (!brand.equals("All Brands")) {
                         stmt.setString(index++, brand);

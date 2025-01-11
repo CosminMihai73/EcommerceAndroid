@@ -26,17 +26,17 @@ public class CreateAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account); // Layout-ul pentru crearea contului
+        setContentView(R.layout.activity_create_account);
 
         dbHelper = new DBHelper();
 
-        // Inițializarea componentelor UI
+
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         emailEditText = findViewById(R.id.emailEditText);
         createAccountButton = findViewById(R.id.createAccountButton);
 
-        // Setează listener-ul pentru butonul de creare cont
+
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +45,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 String email = emailEditText.getText().toString();
 
                 if (!username.isEmpty() && !password.isEmpty() && !email.isEmpty()) {
-                    // Creează contul
+
                     createAccount(username, password, email);
                 } else {
                     Toast.makeText(CreateAccountActivity.this, "Completați toate câmpurile", Toast.LENGTH_SHORT).show();
@@ -61,7 +61,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             runOnUiThread(() -> {
                 if (success) {
                     Toast.makeText(CreateAccountActivity.this, "Cont creat cu succes!", Toast.LENGTH_SHORT).show();
-                    finish(); // Închide activitatea și se întoarce la LoginActivity
+                    finish();
                 } else {
                     Toast.makeText(CreateAccountActivity.this, "Eroare la crearea contului", Toast.LENGTH_SHORT).show();
                 }

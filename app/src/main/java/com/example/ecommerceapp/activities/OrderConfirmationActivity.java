@@ -36,23 +36,21 @@ import java.util.List;
 
 public class OrderConfirmationActivity extends AppCompatActivity {
 
-    private static final String CHANNEL_ID = "order_confirmation_channel";  // ID-ul canalului
-    private static final CharSequence CHANNEL_NAME = "Order Confirmation";  // Numele canalului
+    private static final String CHANNEL_ID = "order_confirmation_channel";
+    private static final CharSequence CHANNEL_NAME = "Order Confirmation";
 
     private EditText fullNameEditText, addressEditText;
     private RadioGroup paymentMethodGroup, deliveryMethodGroup;
     private Button submitOrderButton;
-    private int userId; // ID-ul utilizatorului
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_confirmation);
 
-        // Log pentru începutul creării activității
         Log.d("OrderConfirmation", "Activitatea OrderConfirmation a fost creată");
 
-        // Verifică Android version și creează canalul de notificări dacă este necesar
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,
@@ -72,11 +70,9 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         deliveryMethodGroup = findViewById(R.id.deliveryMethodGroup);
         submitOrderButton = findViewById(R.id.submitOrderButton);
 
-        // Obține ID-ul utilizatorului din SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
-        userId = sharedPreferences.getInt("user_id", -1); // User ID din login
+        userId = sharedPreferences.getInt("user_id", -1);
 
-        // Preia produsele din coș
         String cartItemsJson = getIntent().getStringExtra("cartItems");
         Type type = new TypeToken<List<CartItem>>() {}.getType();
         List<CartItem> cartItems = new Gson().fromJson(cartItemsJson, type);
@@ -87,22 +83,19 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             String paymentMethod = ((RadioButton) findViewById(paymentMethodGroup.getCheckedRadioButtonId())).getText().toString();
             String deliveryMethod = ((RadioButton) findViewById(deliveryMethodGroup.getCheckedRadioButtonId())).getText().toString();
 
-            // Log pentru valorile preluate din UI
             Log.d("OrderConfirmation", "Metodă de plată: " + paymentMethod);
             Log.d("OrderConfirmation", "Metodă de livrare: " + deliveryMethod);
 
-            // Validare pentru metodele de plată și livrare
-            paymentMethod = mapPaymentMethod(paymentMethod); // Mapează 'Numerar' la 'Cash'
-            deliveryMethod = mapDeliveryMethod(deliveryMethod); // Mapează 'Livrare prin curier' la 'Curier'
+            paymentMethod = mapPaymentMethod(paymentMethod);
+            deliveryMethod = mapDeliveryMethod(deliveryMethod);
 
-            // Verifică dacă valorile sunt corecte
+
             if (!isValidEnumValue(paymentMethod, new String[]{"Card", "Cash"}) || !isValidEnumValue(deliveryMethod, new String[]{"Curier", "Showroom"})) {
                 Toast.makeText(OrderConfirmationActivity.this, "Metodă de plată sau livrare invalidă", Toast.LENGTH_SHORT).show();
                 Log.e("OrderConfirmation", "Metodă de plată sau livrare invalidă");
-                return; // Oprește executarea dacă valoarea nu este validă
+                return;
             }
 
-            // Verifică dacă câmpurile nu sunt goale
             if (!fullName.isEmpty() && !address.isEmpty()) {
                 new SubmitOrderTask().execute(fullName, address, paymentMethod, deliveryMethod, cartItems);
             } else {
@@ -112,21 +105,19 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         });
     }
 
-    // Metodă pentru a mapa metoda de plată
     private String mapPaymentMethod(String paymentMethod) {
         if (paymentMethod.equals("Numerar")) {
-            return "Cash";  // Mapează 'Numerar' la 'Cash'
+            return "Cash";
         } else {
-            return paymentMethod;  // Păstrează 'Card' așa cum este
+            return paymentMethod;
         }
     }
 
-    // Metodă pentru a mapa metoda de livrare
     private String mapDeliveryMethod(String deliveryMethod) {
         if (deliveryMethod.equals("Livrare prin curier")) {
-            return "Curier";  // Mapează 'Livrare prin curier' la 'Curier'
+            return "Curier";
         } else if (deliveryMethod.equals("Ridicare din showroom")) {
-            return "Showroom";  // Mapează 'Ridicare din showroom' la 'Showroom'
+            return "Showroom";
         } else {
             return deliveryMethod;
         }
@@ -141,24 +132,21 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             String deliveryMethod = (String) params[3];
             List<CartItem> cartItems = (List<CartItem>) params[4];
 
-            // Calculează prețul total
+
             double totalPrice = calculateTotalPrice(cartItems);
             Log.d("OrderConfirmation", "Preț total: " + totalPrice);
 
-            // Salvează comanda în baza de date
             saveOrderToDatabase(fullName, address, paymentMethod, deliveryMethod, totalPrice, cartItems);
             return null;
         }
 
         @Override
         protected void onPostExecute(Void result) {
-            // Afișează un mesaj de confirmare
+
             Toast.makeText(OrderConfirmationActivity.this, "Comanda a fost plasată cu succes!", Toast.LENGTH_SHORT).show();
 
-            // Trimite notificarea
             sendSuccessNotification();
 
-            // Navighează la ClientMainActivity
             Intent intent = new Intent(OrderConfirmationActivity.this, ClientMainActivity.class);
             startActivity(intent);
             finish();
@@ -167,14 +155,12 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         private void sendSuccessNotification() {
             Log.d("Notification", "Se trimite notificarea de succes");
 
-            // Creează notificarea
             Notification notification = new Notification.Builder(OrderConfirmationActivity.this, CHANNEL_ID)
                     .setContentTitle("Comandă plasată cu succes")
                     .setContentText("Comanda ta a fost procesată cu succes și va fi livrată în curând!")
                     .setSmallIcon(android.R.drawable.ic_dialog_info)
                     .build();
 
-            // Trimite notificarea
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             if (notificationManager != null) {
                 notificationManager.notify(1, notification);  // ID-ul notificării
@@ -198,25 +184,24 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         DBHelper dbHelper = new DBHelper();
         try (Connection con = dbHelper.CONN()) {
             if (con != null) {
-                // 1. Crează comanda în tabelul Orders
+
                 String orderQuery = "INSERT INTO Orders (user_id, full_name, address, payment_method, delivery_method, total_price) VALUES (?, ?, ?, ?, ?, ?)";
                 PreparedStatement stmt = con.prepareStatement(orderQuery, Statement.RETURN_GENERATED_KEYS);
                 stmt.setInt(1, userId);
                 stmt.setString(2, fullName);
                 stmt.setString(3, address);
                 stmt.setString(4, paymentMethod);
-                stmt.setString(5, deliveryMethod);  // Livrare "Curier" sau "Showroom"
-                stmt.setDouble(6, totalPrice); // Prețul total
+                stmt.setString(5, deliveryMethod);
+                stmt.setDouble(6, totalPrice);
                 stmt.executeUpdate();
 
-                // Obține ID-ul comenzii
+
                 ResultSet rs = stmt.getGeneratedKeys();
                 int orderId = -1;
                 if (rs.next()) {
                     orderId = rs.getInt(1);
                 }
 
-                // 2. Adaugă produsele în tabelul OrderItems
                 for (CartItem item : cartItems) {
                     String orderItemQuery = "INSERT INTO OrderItems (order_id, product_name, quantity) VALUES (?, ?, ?)";
                     PreparedStatement orderItemStmt = con.prepareStatement(orderItemQuery);

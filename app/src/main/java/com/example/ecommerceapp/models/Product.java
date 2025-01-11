@@ -7,9 +7,8 @@ public class Product {
     private double price;
     private int stock;
     private String description;
-    private String imagePath;  // Câmp pentru imagine
+    private String imagePath;
 
-    // Constructor
     public Product(int id, String name, String brand, double price, int stock, String description, String imagePath) {
         this.id = id;
         this.name = name;
@@ -17,7 +16,7 @@ public class Product {
         this.price = price;
         this.stock = stock;
         this.description = description;
-        this.imagePath = imagePath;  // Inițializare pentru imagine
+        this.imagePath = imagePath;
     }
 
     public int getId() {

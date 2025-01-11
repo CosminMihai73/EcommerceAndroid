@@ -36,7 +36,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
         holder.usernameTextView.setText(user.getUsername());
         holder.emailTextView.setText(user.getEmail());
 
-        // Setează textul butonului în funcție de tipul utilizatorului
         if (user.getType().equals("Client")) {
             holder.changeUserTypeButton.setText("Admin");
         } else {

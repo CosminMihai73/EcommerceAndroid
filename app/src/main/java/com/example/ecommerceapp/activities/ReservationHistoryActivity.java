@@ -31,11 +31,9 @@ public class ReservationHistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_history);
 
-        // Obține ID-ul utilizatorului din SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
-        userId = sharedPreferences.getInt("user_id", -1); // ID-ul utilizatorului salvat după autentificare
+        userId = sharedPreferences.getInt("user_id", -1);
 
-        // Verifică dacă ID-ul utilizatorului a fost obținut corect
         if (userId == -1) {
             Toast.makeText(this, "ID-ul utilizatorului nu a fost găsit.", Toast.LENGTH_SHORT).show();
             return;
@@ -47,7 +45,6 @@ public class ReservationHistoryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // Încarcă istoricul rezervărilor utilizatorului
         loadReservationHistory(userId);
     }
 
@@ -82,7 +79,6 @@ public class ReservationHistoryActivity extends AppCompatActivity {
                     int quantity = rs.getInt("quantity");
                     String expirationDate = rs.getString("expiration_at");
 
-                    // Creăm un obiect ReservationItem pentru fiecare rezervare
                     reservationItems.add(new ReservationItem(productName, quantity, expirationDate));
                 }
             }

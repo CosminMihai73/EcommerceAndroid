@@ -36,12 +36,11 @@ public class ManageUsersActivity extends AppCompatActivity {
         userList = new ArrayList<>();
         dbHelper = new DBHelper();
 
-        // Încarcă utilizatorii din baza de date
         loadUsers();
     }
 
     private void loadUsers() {
-        // Creăm un thread separat pentru încărcarea utilizatorilor din baza de date
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -66,16 +65,16 @@ public class ManageUsersActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                // Creăm adapterul pentru RecyclerView
+
                                 adapter = new UsersAdapter(tempUserList, new UsersAdapter.OnUserClickListener() {
                                     @Override
                                     public void onChangeUserTypeClick(User user) {
-                                        // Schimbăm tipul utilizatorului
+
                                         changeUserType(user);
                                     }
                                 });
 
-                                recyclerView.setAdapter(adapter); // Setăm adapterul
+                                recyclerView.setAdapter(adapter);
                             }
                         });
                     } catch (SQLException e) {
@@ -89,18 +88,18 @@ public class ManageUsersActivity extends AppCompatActivity {
                     }
                 }
             }
-        }).start();  // Pornim thread-ul
+        }).start();
     }
 
     private void changeUserType(final User user) {
-        // Creăm un thread separat pentru schimbarea tipului utilizatorului
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Connection conn = dbHelper.CONN();
                 if (conn != null) {
                     try {
-                        // Schimbăm tipul utilizatorului între 'Client' și 'Administrator'
+
                         String newType = user.getType().equals("Client") ? "Administrator" : "Client";
                         String query = "UPDATE users SET type = ? WHERE id = ?";
                         PreparedStatement stmt = conn.prepareStatement(query);
@@ -112,7 +111,7 @@ public class ManageUsersActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                // Actualizăm lista de utilizatori
+
                                 loadUsers();
                                 Toast.makeText(ManageUsersActivity.this, "Utilizatorul a fost modificat " + newType, Toast.LENGTH_SHORT).show();
                             }
@@ -128,6 +127,6 @@ public class ManageUsersActivity extends AppCompatActivity {
                     }
                 }
             }
-        }).start();  // Pornim thread-ul
+        }).start();
     }
 }

@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Titlu pentru pagina de detalii ale comenzii -->
     <TextView
         android:id="@+id/orderDetailsTitle"
         android:layout_width="match_parent"
@@ -16,7 +15,6 @@
         android:gravity="center"
         android:layout_marginBottom="16dp"/>
 
-    <!-- RecyclerView pentru a afișa produsele comenzii -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewOrderItems"
         android:layout_width="match_parent"

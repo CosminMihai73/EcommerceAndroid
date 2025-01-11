@@ -7,7 +7,7 @@ public class CartItem {
     private int quantity;
     private String imagePath;
 
-    // Constructor fără ID
+
     public CartItem(String productName, String productBrand, double productPrice, int quantity, String imagePath) {
         this.productName = productName;
         this.productBrand = productBrand;
@@ -16,7 +16,6 @@ public class CartItem {
         this.imagePath = imagePath;
     }
 
-    // Getter și Setter pentru câmpuri
     public String getProductName() {
         return productName;
     }

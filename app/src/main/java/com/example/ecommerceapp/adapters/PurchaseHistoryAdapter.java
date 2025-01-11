@@ -40,10 +40,10 @@ public class PurchaseHistoryAdapter extends RecyclerView.Adapter<PurchaseHistory
         holder.totalPrice.setText("Total: " + order.getTotalPrice() + " RON");
         holder.createdAt.setText("Data: " + order.getCreatedAt());
 
-        // Setează click listener pentru a trimite utilizatorul la detaliile comenzii
+
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, OrderDetailActivity.class);
-            intent.putExtra("orderId", order.getOrderId());  // Trimite ID-ul comenzii
+            intent.putExtra("orderId", order.getOrderId());
             context.startActivity(intent);
         });
     }

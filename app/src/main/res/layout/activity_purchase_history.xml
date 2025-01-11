@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Titlu pentru ecranul de Istoric Achiziții -->
+
     <TextView
         android:id="@+id/historyTitle"
         android:layout_width="match_parent"
@@ -16,7 +16,6 @@
         android:layout_marginBottom="16dp"
         android:gravity="center"/>
 
-    <!-- RecyclerView pentru a afișa comenzile utilizatorului -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
