@@ -10,7 +10,7 @@ import com.example.ecommerceapp.R;
 
 public class AdminMainActivity extends AppCompatActivity {
 
-    private Button manageProductsButton, viewReportsButton, updateProductInfoButton, logoutButton;
+    private Button manageProductsButton, viewReportsButton, updateUserInfoButton, logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class AdminMainActivity extends AppCompatActivity {
 
         manageProductsButton = findViewById(R.id.manageProductsButton);
         viewReportsButton = findViewById(R.id.viewReportsButton);
-        updateProductInfoButton = findViewById(R.id.updateProductInfoButton);
+        updateUserInfoButton = findViewById(R.id.updateUserInfoButton);
         logoutButton = findViewById(R.id.logoutButton);
 
         // Logica pentru butonul de Deconectare
@@ -50,11 +50,11 @@ public class AdminMainActivity extends AppCompatActivity {
 //            startActivity(intent);
 //        });
 //
-//        // Actualizare Informații Produse
-//        updateProductInfoButton.setOnClickListener(v -> {
-//            // Aici adaugi logica pentru a deschide activitatea de actualizare informații produse
-//            Intent intent = new Intent(AdminMainActivity.this, UpdateProductInfoActivity.class);
-//            startActivity(intent);
-//        });
+        // Actualizare Informații user
+        updateUserInfoButton.setOnClickListener(v -> {
+            // Aici adaugi logica pentru a deschide activitatea de actualizare informații produse
+            Intent intent = new Intent(AdminMainActivity.this, ManageUsersActivity.class);
+            startActivity(intent);
+        });
     }
 }

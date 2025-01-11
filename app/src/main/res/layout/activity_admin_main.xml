@@ -24,10 +24,10 @@
         android:layout_marginBottom="16dp" />
 
     <Button
-        android:id="@+id/updateProductInfoButton"
+        android:id="@+id/updateUserInfoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Actualizare Informații Produse"
+        android:text="Actualizare Informații useri"
         android:background="@drawable/button_background"
         android:textColor="@color/background"
         android:layout_marginBottom="16dp" />
