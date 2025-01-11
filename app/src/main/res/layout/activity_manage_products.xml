@@ -1,0 +1,128 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- RecyclerView pentru produsele din baza de date -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Butonul pentru adăugarea unui produs -->
+    <Button
+        android:id="@+id/buttonAddProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adaugă un produs nou"
+        android:layout_marginTop="20dp" />
+
+    <!-- Formularul de editare produs -->
+    <LinearLayout
+        android:id="@+id/editProductLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nume Produs" />
+
+        <EditText
+            android:id="@+id/editTextBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Brand" />
+
+        <EditText
+            android:id="@+id/editTextPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pret"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/editTextStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Stoc"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descriere" />
+
+        <EditText
+            android:id="@+id/editTextImagePath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Calea imaginii" />
+
+        <Button
+            android:id="@+id/saveProductButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salveaza" />
+    </LinearLayout>
+
+    <!-- Formularul de adăugare a unui produs -->
+    <LinearLayout
+        android:id="@+id/addProductLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/editTextAddName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nume Produs" />
+
+        <EditText
+            android:id="@+id/editTextAddBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Brand" />
+
+        <EditText
+            android:id="@+id/editTextAddPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pret"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/editTextAddStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Stoc"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editTextAddDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descriere" />
+
+        <EditText
+            android:id="@+id/editTextAddImagePath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Calea Imaginii" />
+
+        <Button
+            android:id="@+id/saveNewProductButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salveaza noul produs" />
+    </LinearLayout>
+
+</LinearLayout>

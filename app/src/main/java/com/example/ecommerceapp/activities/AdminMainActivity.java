@@ -36,12 +36,12 @@ public class AdminMainActivity extends AppCompatActivity {
             finish();  // Închide AdminMainActivity pentru a preveni revenirea la aceasta
         });
 
-//        // Gestionare Produse
-//        manageProductsButton.setOnClickListener(v -> {
-//            // Aici adaugi logica pentru a deschide activitatea de gestionare produse
-//            Intent intent = new Intent(AdminMainActivity.this, ManageProductsActivity.class);
-//            startActivity(intent);
-//        });
+        // Gestionare Produse
+        manageProductsButton.setOnClickListener(v -> {
+            // Aici adaugi logica pentru a deschide activitatea de gestionare produse
+            Intent intent = new Intent(AdminMainActivity.this, ManageProductsActivity.class);
+            startActivity(intent);
+        });
 //
 //        // Vizualizare Rapoarte
 //        viewReportsButton.setOnClickListener(v -> {
