@@ -2,15 +2,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:gravity="center_horizontal"
-    android:orientation="horizontal"
+    android:gravity="center"
+    android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- EditText pentru Nume complet -->
     <EditText
         android:id="@+id/fullNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:background="#F1F1F1"
         android:hint="Nume complet"
@@ -18,11 +18,11 @@
         android:padding="12dp"
         android:textColor="#000000" />
 
+    <!-- EditText pentru Adresă -->
     <EditText
         android:id="@+id/addressEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:background="#F1F1F1"
         android:hint="Adresă"
@@ -30,6 +30,7 @@
         android:padding="12dp"
         android:textColor="#000000" />
 
+    <!-- Grupul de RadioButtons pentru Metoda de plată -->
     <RadioGroup
         android:id="@+id/paymentMethodGroup"
         android:layout_width="match_parent"
@@ -57,10 +58,11 @@
             android:textSize="16sp" />
     </RadioGroup>
 
+    <!-- Grupul de RadioButtons pentru Metoda de livrare -->
     <RadioGroup
         android:id="@+id/deliveryMethodGroup"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:orientation="horizontal">
 
@@ -84,6 +86,7 @@
             android:textSize="16sp" />
     </RadioGroup>
 
+    <!-- Buton pentru trimiterea comenzii -->
     <Button
         android:id="@+id/submitOrderButton"
         android:layout_width="match_parent"
