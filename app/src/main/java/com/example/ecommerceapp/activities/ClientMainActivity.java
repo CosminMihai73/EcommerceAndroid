@@ -81,14 +81,17 @@ public class ClientMainActivity extends AppCompatActivity {
 
 
         applyFiltersButton.setOnClickListener(v -> {
-
             String selectedBrand = brandFilter.getSelectedItem().toString();
             String minPrice = minPriceFilter.getText().toString();
             String maxPrice = maxPriceFilter.getText().toString();
             String stock = stockFilter.getText().toString();
 
 
-            loadFilteredProducts(selectedBrand, minPrice, maxPrice, stock);
+            if (selectedBrand.equals("Toate brandurile") && minPrice.isEmpty() && maxPrice.isEmpty() && stock.isEmpty()) {
+                loadProducts();
+            } else {
+                loadFilteredProducts(selectedBrand, minPrice, maxPrice, stock);
+            }
         });
 
         settingsButton = findViewById(R.id.settingsButton);
@@ -102,7 +105,6 @@ public class ClientMainActivity extends AppCompatActivity {
     }
 
     private void loadProducts() {
-
         Thread thread = new Thread(() -> {
             Connection connection = new DBHelper().CONN();
             if (connection != null) {
@@ -110,6 +112,9 @@ public class ClientMainActivity extends AppCompatActivity {
                     String query = "SELECT * FROM Products";
                     PreparedStatement stmt = connection.prepareStatement(query);
                     ResultSet rs = stmt.executeQuery();
+
+                    // Curăță lista înainte de a adăuga produsele
+                    productList.clear();
                     while (rs.next()) {
                         int id = rs.getInt("id");
                         String name = rs.getString("name");
@@ -164,15 +169,14 @@ public class ClientMainActivity extends AppCompatActivity {
     }
 
     private void loadFilteredProducts(String brand, String minPrice, String maxPrice, String stock) {
-
         Thread thread = new Thread(() -> {
             Connection connection = new DBHelper().CONN();
             if (connection != null) {
                 try {
                     StringBuilder query = new StringBuilder("SELECT * FROM Products WHERE 1=1");
 
-
-                    if (!brand.equals("All Brands")) {
+                    // Adăugăm filtrele
+                    if (!brand.equals("Toate brandurile")) {
                         query.append(" AND brand = ?");
                     }
                     if (!minPrice.isEmpty()) {
@@ -187,9 +191,8 @@ public class ClientMainActivity extends AppCompatActivity {
 
                     PreparedStatement stmt = connection.prepareStatement(query.toString());
 
-
                     int index = 1;
-                    if (!brand.equals("All Brands")) {
+                    if (!brand.equals("Toate brandurile")) {
                         stmt.setString(index++, brand);
                     }
                     if (!minPrice.isEmpty()) {
@@ -203,7 +206,9 @@ public class ClientMainActivity extends AppCompatActivity {
                     }
 
                     ResultSet rs = stmt.executeQuery();
-                    productList.clear();
+
+                    // Curăță lista înainte de a adăuga produsele filtrate
+                    productList.clear(); // Aceasta previne duplicarea
                     while (rs.next()) {
                         int id = rs.getInt("id");
                         String name = rs.getString("name");
@@ -216,6 +221,7 @@ public class ClientMainActivity extends AppCompatActivity {
                         Product product = new Product(id, name, productBrand, price, productStock, description, imagePath);
                         productList.add(product);
                     }
+                    // Notifică adapterul că datele s-au schimbat
                     runOnUiThread(() -> productAdapter.notifyDataSetChanged());
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -225,4 +231,5 @@ public class ClientMainActivity extends AppCompatActivity {
         });
         thread.start();
     }
+
 }
